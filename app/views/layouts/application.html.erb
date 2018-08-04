@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<style>
+  body {
+    background-color: #76E932;
+    font-size: 40px;
+    color: white;
+    
+  }
+  div {
+    text-align: center;
+  }
+  .headtexts{
+    font-size: 27px;}
+</style>
+<html>
+  <head>
+    <title>IOTAS</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <center>
+    <br><br><br><br><br>
+    <h1>Welcome to IOTAS!</h1>
+    <h2 class='headtexts'>Please login.</h2>
+    </center>
+    <br />
+    <div>
+      <% if current_user %>
+        Signed in as <strong><%= current_user.name %></strong>!
+        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      <% else %>
+        <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+      <% end %>
+    </div>
+    <div>
+    <%= yield %>
+    </div>
+  </body>
+</html>
